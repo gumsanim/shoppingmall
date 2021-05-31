@@ -1,0 +1,72 @@
+/*전역속성*/
+
+body{
+    margin:0;
+    padding:0;
+  }
+  
+  ul{
+    margin:0;
+    padding:0;
+  }
+  
+  li{
+    margin:0;
+    padding:0;
+    list-style: none;
+  }
+
+  .shop{
+    text-align: center;
+    font-size:40px;
+    font-weight: bold;
+  }
+
+  .status{
+    display:flex;
+    justify-content: flex-end;
+    align-items: center;    
+  }
+
+  .money, .cart, .order, .topup{
+    text-align: end;
+    font-weight: bold;
+    margin-right:20px;
+  }
+
+  .money{
+    margin-right:auto;
+  }
+  
+  ul.nav{
+    display:flex;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+  }
+  
+  .nav li{
+    height:30px;
+    flex:1;
+    text-align: center;
+    color:black;
+    line-height: 30px;
+    font-weight: bold;
+    text-decoration: none;
+
+  }
+  
+  
+  @media screen and (max-width:768px) {
+    ul.nav{
+      flex-direction: column;
+    }
+
+    .money{
+      margin-right:0;
+    }
+
+    .status{
+      flex-direction: column;
+    }
+  }
+  

@@ -1,0 +1,57 @@
+/*전역속성*/
+
+body{
+  margin:0;
+  padding:0;
+}
+
+ul{
+  margin:0;
+  padding:0;
+}
+
+li{
+  margin:0;
+  padding:0;
+  list-style: none;
+}
+
+nav .search{
+  display:flex;
+  justify-content: center;
+  align-content:center;
+}
+
+nav input{
+  display:inline-block;
+  width:300px;
+  height:50px;
+  margin:20px auto;
+  font-size: 25px;
+}
+
+
+/*body*/
+
+/*
+ul.nav{
+  display:flex;
+  border: 3px solid black;
+}
+
+.nav li{
+  height:30px;
+  flex:1;
+  text-align: center;
+  color:black;
+  line-height: 30px;
+  font-weight: bold;
+}
+
+
+@media screen and (max-width:768px) {
+  ul.nav{
+    flex-direction: column;
+  }
+}
+*/
