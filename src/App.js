@@ -19,8 +19,35 @@ import Topup from "./components/Topup";
 function App() {
 
   const [money, setMoney] = useState(300000);
-  const [cart, setCart] = useState([]);
-  const [order,setOrder] = useState([]);
+
+  const [topsOrder, setTopsOrder] = useState(
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+    ]
+  )
+
+  const [bottomsOrder, setBottomsOrder] = useState(
+    [
+      0,
+      0,
+      0,
+      0,
+    ]
+  )
+
+  const [shoesOrder, setShoesOrder] = useState(
+    [
+      0,
+      0,
+      0,
+      0,
+    ]
+  )
+
   const [tops, setTops] = useState(
     [
       {
@@ -132,22 +159,70 @@ function App() {
           <Shoes shoes={shoes} setShoes={setShoes}/>
         </Route>
         <Route path="/tops/detail/:id">
-          <DetailTops tops={tops} setTops={setTops}/>
+          <DetailTops 
+            tops={tops} 
+            setTops={setTops} 
+            topsOrder={topsOrder} 
+            setTopsOrder={setTopsOrder} 
+            money={money} 
+            setMoney={setMoney}/>
         </Route>
         <Route path="/bottoms/detail/:id">
-          <DetailBottoms bottoms={bottoms} setBottoms={setBottoms}/>
+          <DetailBottoms 
+            bottoms={bottoms} 
+            setBottoms={setBottoms} 
+            bottomsOrder={bottomsOrder} 
+            setBottomsOrder={setBottomsOrder} 
+            money={money} 
+            setMoney={setMoney}/>
         </Route>
         <Route path="/shoes/detail/:id">
-          <DetailShoes shoes={shoes} setShoes={setShoes}/>
+          <DetailShoes 
+            shoes={shoes} 
+            setShoes={setShoes} 
+            shoesOrder={shoesOrder} 
+            setShoesOrder={setShoesOrder} 
+            money={money} 
+            setMoney={setMoney}/>
         </Route>
         <Route path="/cart">
-          <Cart/>
+          <Cart 
+            money={money}
+            setMoney={setMoney}
+            topsOrder={topsOrder}
+            setTopsOrder={setTopsOrder}
+            bottomsOrder={bottomsOrder} 
+            setBottomsOrder={setBottomsOrder}
+            shoesOrder={shoesOrder} 
+            setShoesOrder={setShoesOrder}
+            tops={tops}
+            setTops={setTops}
+            bottoms={bottoms}
+            setBottoms={setBottoms}
+            shoes={shoes}
+            setShoes={setShoes}
+          />
         </Route>
         <Route path="/order">
-          <Order/>
+            <Order 
+            money={money} 
+            setMoney={setMoney}
+            topsOrder={topsOrder}
+            setTopsOrder={setTopsOrder}
+            bottomsOrder={bottomsOrder}
+            setBottomsOrder={setBottomsOrder}
+            shoesOrder={shoesOrder}
+            setShoesOrder={setShoesOrder}
+            tops={tops}
+            setTops={tops}
+            bottoms={bottoms}
+            setBottoms={setBottoms}
+            shoes={shoes}
+            setShoes={setShoes}
+            />
         </Route>
         <Route path="/topup">
-          <Topup/>
+          <Topup money={money} setMoney={setMoney}/>
         </Route>
     </div>
   );
