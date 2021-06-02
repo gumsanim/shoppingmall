@@ -1,5 +1,5 @@
 import React from "react";
-import "../css/Tops.css";
+import "../css/TopsBottomsShoes.css";
 import {useHistory} from "react-router-dom";
 
 export default function Tops(props){
@@ -16,10 +16,10 @@ export default function Tops(props){
                             <li key={idx} onClick={()=>{
                                 history.push("/tops/detail/"+elem.id)
                             }}>
-                                <div className="item"><img src="" alt={elem.id}/></div>
-                                <p>제품명: {elem.name}</p>
-                                <p>가격: {elem.price}원</p>
-                                <p>수량: {elem.stock}개</p>
+                                <div className="item"><img src={elem.img} alt={elem.id}/></div>
+                                <p>{elem.name}</p>
+                                <p>{elem.price}원</p>
+                                <p>{elem.stock}개</p>
                             </li>
                             )
                         })

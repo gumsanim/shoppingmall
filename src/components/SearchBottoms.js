@@ -4,7 +4,6 @@ import "../css/SearchBottoms.css";
 export default function SearchBottoms(props){
 
     let searchBottoms = [];
-    let originalBottoms = [...props.bottoms];
 
     return(
         <div className="search">

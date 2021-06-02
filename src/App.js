@@ -18,7 +18,7 @@ import Topup from "./components/Topup";
 
 function App() {
 
-  const [money, setMoney] = useState(300000);
+  const [money, setMoney] = useState(0);
 
   const [topsOrder, setTopsOrder] = useState(
     [
@@ -54,31 +54,36 @@ function App() {
         id: 0,
         name: "후드티",
         price: 25000,
-        stock: 9
+        stock: 9,
+        img: "img/tops0.jpg"
       },
       {
         id: 1,
         name: "니트",
         price: 23000,
-        stock: 8
+        stock: 8,
+        img: "img/tops1.jpg"
       },
       {
         id: 2,
         name: "셔츠",
         price: 20000,
-        stock: 12
+        stock: 12,
+        img: "img/tops2.jpg"
       },
       {
         id: 3,
         name: "가디건",
         price: 30000,
-        stock: 10
+        stock: 10,
+        img: "img/tops3.jpg"
       },
       {
         id: 4,
         name: "티셔츠",
         price: 9000,
-        stock: 20
+        stock: 20,
+        img: "img/tops4.jpg"
       },
     ]
   )
@@ -89,25 +94,29 @@ function App() {
         id: 0,
         name: "청바지",
         price: 32000,
-        stock: 3
+        stock: 3,
+        img: "img/bottoms0.jpg"
       },
       {
         id: 1,
         name: "슬랙스",
         price: 35000,
-        stock: 13
+        stock: 13,
+        img: "img/bottoms1.jpg"
       },
       {
         id: 2,
         name: "반바지",
         price: 19000,
-        stock: 10
+        stock: 10,
+        img: "img/bottoms2.jpg"
       },
       {
         id: 3,
         name: "카고바지",
         price: 31000,
-        stock: 18
+        stock: 18,
+        img: "img/bottoms3.jpg"
       },
     ]
   )
@@ -118,25 +127,29 @@ function App() {
         id: 0,
         name: "컨버스",
         price: 59000,
-        stock: 16
+        stock: 16,
+        img: "img/shoes0.jpg"
       },
       {
         id: 1,
         name: "슈퍼스타",
         price: 88000,
-        stock: 6
+        stock: 6,
+        img: "img/shoes1.jpg"
       },
       {
         id: 2,
         name: "에어포스",
         price: 120000,
-        stock: 11
+        stock: 11,
+        img: "img/shoes2.jpg"
       },
       {
         id: 3,
         name: "올드스쿨",
         price: 76000,
-        stock: 2
+        stock: 2,
+        img: "img/shoes3.jpg"
       },
     ]
   )

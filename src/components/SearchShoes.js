@@ -4,7 +4,6 @@ import "../css/SearchShoes.css";
 export default function SearchShoes(props){
 
     let searchShoes= [];
-    let originalShoes = [...props.shoes];
 
     return(
         <div className="search">

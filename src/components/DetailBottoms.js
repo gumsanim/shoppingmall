@@ -1,5 +1,5 @@
 import React from "react";
-import "../css/DetailBottoms.css";
+import "../css/DetailTopsBottomsShoes.css";
 import {useHistory, useParams} from "react-router-dom";
 
 export default function DetailBottoms(props){
@@ -13,33 +13,30 @@ export default function DetailBottoms(props){
     return (
         <>
             <div className="container">
-                <ul>       
-                    <li>
-                        <div className="item"><img src="" alt=""/></div>
-                        <p>제품명: {item.name}</p>
-                        <p>가격: {item.price}</p>
-                        <p>수량: {item.stock}</p>
-                        <div>주문수량
-                            <button onClick={()=>{
-                               if(props.bottomsOrder[item.id]>item.stock-1){
-                                alert("수량이 부족합니다");
-                                return;
-                                }
-                                let copyBottomsOrder = [...props.bottomsOrder];
-                                copyBottomsOrder[item.id]++;
-                                props.setBottomsOrder(copyBottomsOrder);
+                <div className="item"><img src={item.img} alt={item.id}/></div>
+                <p>{item.name}</p>
+                <p>{item.price}원</p>
+                <p>{item.stock}개</p>
+                <div>
+                    <button onClick={()=>{
+                        if(props.bottomsOrder[item.id]>item.stock-1){
+                            alert("수량이 부족합니다");
+                            return;
+                        }
+                        let copyBottomsOrder = [...props.bottomsOrder];
+                        copyBottomsOrder[item.id]++;
+                        props.setBottomsOrder(copyBottomsOrder);
                         }}>+</button>
-                            <button onClick={()=>{
-                                if(props.bottomsOrder[item.id]==0){
-                                    return;
-                                }
-                                let copyBottomsOrder = [...props.bottomsOrder];
-                                copyBottomsOrder[item.id]--;
-                                props.setBottomsOrder(copyBottomsOrder);
-                        }}>-</button></div>
-                        <span>주문수량:{props.bottomsOrder[item.id]}</span>
-                    </li>              
-                </ul>
+                    <button onClick={()=>{
+                        if(props.bottomsOrder[item.id]==0){
+                            return;
+                        }
+                        let copyBottomsOrder = [...props.bottomsOrder];
+                        copyBottomsOrder[item.id]--;
+                        props.setBottomsOrder(copyBottomsOrder);
+                        }}>-</button>
+                </div>
+                <span>주문수량:{props.bottomsOrder[item.id]}</span>
             </div>
             <div className="container2">
             <button onClick={()=>{
