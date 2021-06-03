@@ -8,7 +8,7 @@ export default function SearchTops(props){
     return(
         <div className="search">
             <input type="text" placeholder="무엇을 찾으시나요?" onChange={(e)=>{
-
+                
                 for(let i = 0; i<props.tops.length; i++){
                     if(props.tops[i].name.includes(e.target.value)){
                         searchTops.push(props.tops[i]);

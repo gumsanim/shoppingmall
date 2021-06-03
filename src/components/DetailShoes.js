@@ -9,6 +9,9 @@ export default function DetailShoes(props){
     let item = props.shoes.find((elem)=>{
         return elem.id == id;
     })
+    let idx = props.shoes.findIndex((elem)=>{
+        return elem.id == id;
+    })
 
     return (
         <>
@@ -19,27 +22,44 @@ export default function DetailShoes(props){
                 <p>{item.stock}개</p>
                 <div>
                     <button onClick={()=>{
-                        if(props.shoesOrder[item.id]>item.stock-1){
-                            alert("수량이 부족합니다");
+                        let copyShoes = [...props.shoes];
+                        if(copyShoes[idx].order>copyShoes[idx].stock-1) {
+                            alert("재고 수량이 부족합니다.");
                             return;
                         }
-                        let copyShoesOrder = [...props.shoesOrder];
-                        copyShoesOrder[item.id]++;
-                        props.setShoesOrder(copyShoesOrder);
-                        }}>+</button>
+                        copyShoes[idx].order++;
+                        props.setShoes([...copyShoes]);
+                    }}>+</button>
                     <button onClick={()=>{
-                            
+                       let copyShoes = [...props.shoes];
+                       if(copyShoes[idx].order<=0) {
+                           return;
+                       }
+                       copyShoes[idx].order--;
+                       props.setShoes([...copyShoes]);
                     }}>-</button>
                 </div>
-                <span>주문수량:{props.shoesOrder[item.id]}</span>
+                <div>주문수량: {props.shoes[idx].order}</div>
+                <div>주문가격: {props.shoes[idx].price*props.shoes[idx].order}</div>
             </div>
             <div className="container2">
-            <button onClick={()=>{
-                history.push("/cart");     
-            }}>주문하기</button>
-            <button onClick={()=>{
-                history.goBack();
-            }}>뒤로가기</button>
+                <button onClick={()=>{
+                    if(props.money<props.shoes[idx].price*props.shoes[idx].order){
+                    alert("보유하신 금액이 부족합니다");
+                    return;
+                    } 
+                    let copyShoes = [...props.shoes];
+                    copyShoes[idx].cart = copyShoes[idx].order;
+                    copyShoes[idx].order = 0;
+                    props.setShoes([...copyShoes]);
+                    history.push("/cart"); 
+                }}>주문하기</button>
+                    <button onClick={()=>{
+                    let copyShoes = [...props.shoes];
+                    copyShoes[idx].order = 0;
+                    props.setShoes(copyShoes);
+                    history.goBack();
+                }}>뒤로가기</button>
             </div>
         </>
     )

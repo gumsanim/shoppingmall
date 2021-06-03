@@ -20,34 +20,6 @@ function App() {
 
   const [money, setMoney] = useState(0);
 
-  const [topsOrder, setTopsOrder] = useState(
-    [
-      0,
-      0,
-      0,
-      0,
-      0,
-    ]
-  )
-
-  const [bottomsOrder, setBottomsOrder] = useState(
-    [
-      0,
-      0,
-      0,
-      0,
-    ]
-  )
-
-  const [shoesOrder, setShoesOrder] = useState(
-    [
-      0,
-      0,
-      0,
-      0,
-    ]
-  )
-
   const [tops, setTops] = useState(
     [
       {
@@ -55,35 +27,50 @@ function App() {
         name: "후드티",
         price: 25000,
         stock: 9,
-        img: "img/tops0.jpg"
+        img: "img/tops0.jpg",
+        order: 0,
+        cart: 0,
+        purchase:0
       },
       {
         id: 1,
         name: "니트",
         price: 23000,
         stock: 8,
-        img: "img/tops1.jpg"
+        img: "img/tops1.jpg",
+        order: 0,
+        cart: 0,
+        purchase:0
       },
       {
         id: 2,
         name: "셔츠",
         price: 20000,
         stock: 12,
-        img: "img/tops2.jpg"
+        img: "img/tops2.jpg",
+        order: 0,
+        cart: 0,
+        purchase:0
       },
       {
         id: 3,
         name: "가디건",
         price: 30000,
         stock: 10,
-        img: "img/tops3.jpg"
+        img: "img/tops3.jpg",
+        order: 0,
+        cart: 0,
+        purchase:0
       },
       {
         id: 4,
         name: "티셔츠",
         price: 9000,
         stock: 20,
-        img: "img/tops4.jpg"
+        img: "img/tops4.jpg",
+        order: 0,
+        cart: 0,
+        purchase:0
       },
     ]
   )
@@ -95,28 +82,40 @@ function App() {
         name: "청바지",
         price: 32000,
         stock: 3,
-        img: "img/bottoms0.jpg"
+        img: "img/bottoms0.jpg",
+        order: 0,
+        cart: 0,
+        purchase:0
       },
       {
         id: 1,
         name: "슬랙스",
         price: 35000,
         stock: 13,
-        img: "img/bottoms1.jpg"
+        img: "img/bottoms1.jpg",
+        order: 0,
+        cart: 0,
+        purchase:0
       },
       {
         id: 2,
         name: "반바지",
         price: 19000,
         stock: 10,
-        img: "img/bottoms2.jpg"
+        img: "img/bottoms2.jpg",
+        order: 0,
+        cart: 0,
+        purchase:0
       },
       {
         id: 3,
         name: "카고바지",
         price: 31000,
         stock: 18,
-        img: "img/bottoms3.jpg"
+        img: "img/bottoms3.jpg",
+        order: 0,
+        cart: 0,
+        purchase:0
       },
     ]
   )
@@ -128,28 +127,40 @@ function App() {
         name: "컨버스",
         price: 59000,
         stock: 16,
-        img: "img/shoes0.jpg"
+        img: "img/shoes0.jpg",
+        order: 0,
+        cart: 0,
+        purchase:0
       },
       {
         id: 1,
         name: "슈퍼스타",
         price: 88000,
         stock: 6,
-        img: "img/shoes1.jpg"
+        img: "img/shoes1.jpg",
+        order: 0,
+        cart: 0,
+        purchase:0
       },
       {
         id: 2,
         name: "에어포스",
         price: 120000,
         stock: 11,
-        img: "img/shoes2.jpg"
+        img: "img/shoes2.jpg",
+        order: 0,
+        cart: 0,
+        purchase:0
       },
       {
         id: 3,
         name: "올드스쿨",
         price: 76000,
         stock: 2,
-        img: "img/shoes3.jpg"
+        img: "img/shoes3.jpg",
+        order: 0,
+        cart: 0,
+        purchase:0
       },
     ]
   )
@@ -175,8 +186,6 @@ function App() {
           <DetailTops 
             tops={tops} 
             setTops={setTops} 
-            topsOrder={topsOrder} 
-            setTopsOrder={setTopsOrder} 
             money={money} 
             setMoney={setMoney}/>
         </Route>
@@ -184,8 +193,6 @@ function App() {
           <DetailBottoms 
             bottoms={bottoms} 
             setBottoms={setBottoms} 
-            bottomsOrder={bottomsOrder} 
-            setBottomsOrder={setBottomsOrder} 
             money={money} 
             setMoney={setMoney}/>
         </Route>
@@ -193,8 +200,6 @@ function App() {
           <DetailShoes 
             shoes={shoes} 
             setShoes={setShoes} 
-            shoesOrder={shoesOrder} 
-            setShoesOrder={setShoesOrder} 
             money={money} 
             setMoney={setMoney}/>
         </Route>
@@ -202,12 +207,6 @@ function App() {
           <Cart 
             money={money}
             setMoney={setMoney}
-            topsOrder={topsOrder}
-            setTopsOrder={setTopsOrder}
-            bottomsOrder={bottomsOrder} 
-            setBottomsOrder={setBottomsOrder}
-            shoesOrder={shoesOrder} 
-            setShoesOrder={setShoesOrder}
             tops={tops}
             setTops={setTops}
             bottoms={bottoms}
@@ -220,12 +219,6 @@ function App() {
             <Order 
             money={money} 
             setMoney={setMoney}
-            topsOrder={topsOrder}
-            setTopsOrder={setTopsOrder}
-            bottomsOrder={bottomsOrder}
-            setBottomsOrder={setBottomsOrder}
-            shoesOrder={shoesOrder}
-            setShoesOrder={setShoesOrder}
             tops={tops}
             setTops={tops}
             bottoms={bottoms}

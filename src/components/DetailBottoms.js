@@ -9,6 +9,9 @@ export default function DetailBottoms(props){
     let item = props.bottoms.find((elem)=>{
         return elem.id == id;
     })
+    let idx = props.bottoms.findIndex((elem)=>{
+        return elem.id == id;
+    })
 
     return (
         <>
@@ -19,32 +22,48 @@ export default function DetailBottoms(props){
                 <p>{item.stock}개</p>
                 <div>
                     <button onClick={()=>{
-                        if(props.bottomsOrder[item.id]>item.stock-1){
-                            alert("수량이 부족합니다");
-                            return;
-                        }
-                        let copyBottomsOrder = [...props.bottomsOrder];
-                        copyBottomsOrder[item.id]++;
-                        props.setBottomsOrder(copyBottomsOrder);
-                        }}>+</button>
+                       let copyBottoms = [...props.bottoms];
+                       if(copyBottoms[idx].order>copyBottoms[idx].stock-1) {
+                           alert("재고 수량이 부족합니다.");
+                           return;
+                       }
+                       copyBottoms[idx].order++;
+                       props.setBottoms([...copyBottoms]);
+                       console.log(props.bottoms[idx].order);
+                    }}>+</button>
                     <button onClick={()=>{
-                        if(props.bottomsOrder[item.id]==0){
+                        let copyBottoms = [...props.bottoms];
+                        if(copyBottoms[idx].order<=0) {
                             return;
                         }
-                        let copyBottomsOrder = [...props.bottomsOrder];
-                        copyBottomsOrder[item.id]--;
-                        props.setBottomsOrder(copyBottomsOrder);
-                        }}>-</button>
+                        copyBottoms[idx].order--;
+                        props.setBottoms([...copyBottoms]);
+                        console.log(props.bottoms[idx].order);
+                    }}>-</button>
                 </div>
-                <span>주문수량:{props.bottomsOrder[item.id]}</span>
+                <div>주문수량: {props.bottoms[idx].order}</div>
+                <div>주문가격: {props.bottoms[idx].price*props.bottoms[idx].order}</div>
             </div>
             <div className="container2">
-            <button onClick={()=>{
-                history.push("/cart"); 
-            }}>주문하기</button>
-            <button onClick={()=>{
-                history.goBack();
-            }}>뒤로가기</button>
+                <button onClick={()=>{
+                    if(props.money<props.bottoms[idx].price*props.bottoms[idx].order){
+                        alert("보유하신 금액이 부족합니다");
+                        return;
+                    } 
+                    let copyBottoms = [...props.bottoms];
+                    copyBottoms[idx].cart = copyBottoms[idx].order;
+                    copyBottoms[idx].order = 0;
+                    props.setBottoms([...copyBottoms]);
+                    console.log(props.bottoms[idx].order, props.bottoms[idx].cart);
+                    history.push("/cart"); 
+                }}>주문하기</button>
+                <button onClick={()=>{
+                    let copyBottoms = [...props.bottoms];
+                    copyBottoms[idx].order = 0;
+                    props.setBottoms(copyBottoms);
+                    console.log(props.bottoms[idx].order, props.bottoms[idx].cart);
+                    history.goBack();
+                }}>뒤로가기</button>
             </div>
         </>
     )

@@ -1,5 +1,9 @@
 /*전역속성*/
 
+*{
+  box-sizing: border-box;
+}
+
 body{
     margin:0;
     padding:0;
@@ -40,8 +44,8 @@ body{
   
   ul.nav{
     display:flex;
-    border-top: 2px solid black;
-    border-bottom: 2px solid black;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
   }
   
   .nav li{
@@ -53,6 +57,18 @@ body{
     font-weight: bold;
     text-decoration: none;
 
+  }
+
+  .ad{
+    width:100%;
+    height:500px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-size:50px;
+    background:white;
+    color:black;
+    font-weight:bold;
   }
   
   
