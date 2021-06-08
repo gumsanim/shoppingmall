@@ -111,7 +111,11 @@ export default function Cart(props){
                     <Title>상의
                         {
                             topsCart.map((elem,id)=>{
-                                return <Content>{elem.name} / {elem.cart}개 / {elem.cart*elem.price}원</Content>
+                                return (
+                                  
+                                        <Content>{elem.name} / {elem.cart}개 / {elem.cart*elem.price}원</Content>
+                                   
+                                )
                             })
                         }
                     </Title>

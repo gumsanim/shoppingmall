@@ -16,7 +16,7 @@ export default function DetailTops(props){
     return (
         <>
             <div className="container">
-                <div className="item"><img src='img/tops2.jpg' alt={item.id}/></div>
+                <div className="item"><img src={item.img} alt={item.id}/></div>
                 <p>{item.name}</p> 
                 <p>{item.price}원</p>
                 <p>{item.stock}개</p>
