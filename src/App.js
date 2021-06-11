@@ -8,9 +8,6 @@ import Shoes from "./components/Shoes";
 import DetailTops from "./components/DetailTops";
 import DetailBottoms from "./components/DetailBottoms";
 import DetailShoes from "./components/DetailShoes";
-import SearchTops from "./components/SearchTops";
-import SearchBottoms from "./components/SearchBottoms";
-import SearchShoes from "./components/SearchShoes";
 import Cart from "./components/Cart";
 import Order from "./components/Order";
 import Topup from "./components/Topup";
@@ -171,15 +168,12 @@ function App() {
           <Home money={money} setMoney={setMoney}/>
         </Route>
         <Route exact path="/tops">
-          <SearchTops tops={tops} setTops={setTops}/>
           <Tops tops={tops} setTops={setTops} />
         </Route>
         <Route exact path="/bottoms">
-          <SearchBottoms bottoms={bottoms} setBottoms={setBottoms}/>
           <Bottoms bottoms={bottoms} setBottoms={setBottoms}/>
         </Route>
         <Route exact path="/shoes">
-          <SearchShoes shoes={shoes} setShoes={setShoes}/>
           <Shoes shoes={shoes} setShoes={setShoes}/>
         </Route>
         <Route path="/tops/detail/:id">

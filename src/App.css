@@ -16,11 +16,6 @@ li{
   list-style: none;
 }
 
-nav .search{
-  display:flex;
-  justify-content: center;
-  align-content:center;
-}
 
 nav input{
   display:inline-block;

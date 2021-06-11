@@ -29,7 +29,6 @@ export default function DetailTops(props){
                         }
                         copyTops[idx].order++;
                         props.setTops([...copyTops]);
-                        console.log(props.tops[idx].order);
                     }}>+</button>
                     <button onClick={()=>{
                          let copyTops = [...props.tops];
@@ -38,7 +37,6 @@ export default function DetailTops(props){
                          }
                          copyTops[idx].order--;
                          props.setTops([...copyTops]);
-                         console.log(props.tops[idx].order);
                     }}>-</button>
                 </div>
                 <div>주문수량: {props.tops[idx].order} </div>
@@ -50,18 +48,26 @@ export default function DetailTops(props){
                         alert("보유하신 금액이 부족합니다");
                         return;
                     }
-                    let copyTops = [...props.tops];
-                    copyTops[idx].cart = copyTops[idx].order;
-                    copyTops[idx].order = 0;
-                    props.setTops([...copyTops]);
-                    console.log(props.tops[idx].order, props.tops[idx].cart);
-                    history.push("/cart"); 
+                    if(props.tops[idx].cart<=0){
+                        let copyTops = [...props.tops];
+                        copyTops[idx].cart = copyTops[idx].order;
+                        copyTops[idx].order = 0;
+                        copyTops[idx].stock -= copyTops[idx].cart;
+                        props.setTops([...copyTops]);
+                        history.push("/cart"); 
+                    } else {
+                        let copyTops = [...props.tops];
+                        copyTops[idx].stock -= copyTops[idx].order;
+                        copyTops[idx].cart += copyTops[idx].order; 
+                        copyTops[idx].order = 0;
+                        props.setTops([...copyTops]);
+                        history.push("/cart"); 
+                    }
                 }}>주문하기</button>
                 <button onClick={()=>{
                     let copyTops = [...props.tops];
                     copyTops[idx].order = 0;
                     props.setTops(copyTops);
-                    console.log(props.tops[idx].order, props.tops[idx].cart);
                     history.goBack();
                 }}>뒤로가기</button>
             </div>

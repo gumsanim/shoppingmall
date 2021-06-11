@@ -7,7 +7,6 @@ export default function Order(props){
     props.tops.forEach((elem)=>{
         if(elem.purchase>0){
             topsPurchase.push(elem);
-            console.log(elem)
         }
     })
 
@@ -15,7 +14,6 @@ export default function Order(props){
     props.bottoms.forEach((elem)=>{
         if(elem.purchase>0){
             bottomsPurchase.push(elem);
-            console.log(elem)
         }
     })
     
@@ -23,7 +21,6 @@ export default function Order(props){
     props.shoes.forEach((elem)=>{
         if(elem.purchase>0){
             shoesPurchase.push(elem);
-            console.log(elem)
         }
     })
 
@@ -64,6 +61,7 @@ export default function Order(props){
         display:flex;
         flex-wrap:wrap;
         justify-content:space-around;
+
         align-items:center;
         margin: 20px 0;
     `
@@ -75,7 +73,7 @@ export default function Order(props){
         display:flex;
         flex-direction: column;
         margin: 20px 0;
-        border-radius: 25px;
+        border-radius: 30px;
     `
 
     let OrderList = styled.div`
@@ -109,16 +107,28 @@ export default function Order(props){
                             })
                         }    
                     </OrderList>
+                    <h3>금액:  
+                        {
+                            topsSum()
+                        }원
+                    </h3>
                 </Container>
                 
                 <Container>
                     <OrderList>하의
                         {
                             bottomsPurchase.map((elem,id)=>{
-                                return <OrderListItem>{elem.name} / {elem.purchase}개 / {elem.price}원</OrderListItem>
+                                return (
+                                <OrderListItem>{elem.name} / {elem.purchase}개 / {elem.price}원</OrderListItem>
+                                )
                             })
                         }  
                     </OrderList>
+                    <h3>금액:  
+                        {
+                            bottomsSum()
+                        }원
+                    </h3>
                 </Container>
                 <Container>
                     <OrderList>신발
@@ -128,6 +138,11 @@ export default function Order(props){
                             })
                         } 
                     </OrderList>
+                    <h3>금액:  
+                        {
+                            shoesSum()
+                        }원
+                    </h3>
                 </Container> 
             </Align>
             <Sum>총금액:{topsSum()+bottomsSum()+shoesSum()}원</Sum> 

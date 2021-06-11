@@ -48,11 +48,22 @@ export default function DetailShoes(props){
                     alert("보유하신 금액이 부족합니다");
                     return;
                     } 
-                    let copyShoes = [...props.shoes];
-                    copyShoes[idx].cart = copyShoes[idx].order;
-                    copyShoes[idx].order = 0;
-                    props.setShoes([...copyShoes]);
-                    history.push("/cart"); 
+                    if(props.shoes[idx].cart<=0){
+                        let copyShoes = [...props.shoes];
+                        copyShoes[idx].cart = copyShoes[idx].order;
+                        copyShoes[idx].order = 0;
+                        copyShoes[idx].stock -= copyShoes[idx].cart;
+                        props.setShoes([...copyShoes]);
+                        history.push("/cart"); 
+                    } else {
+                        let copyShoes = [...props.shoes];
+                        copyShoes[idx].stock -= copyShoes[idx].order;
+                        copyShoes[idx].cart += copyShoes[idx].order; 
+                        copyShoes[idx].order = 0;
+                        props.setShoes([...copyShoes]);
+                        history.push("/cart"); 
+                    }
+                   
                 }}>주문하기</button>
                     <button onClick={()=>{
                     let copyShoes = [...props.shoes];

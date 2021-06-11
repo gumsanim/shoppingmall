@@ -10,7 +10,6 @@ export default function Cart(props){
     props.tops.forEach((elem)=>{
         if(elem.cart>0){
             topsCart.push(elem);
-            console.log(elem)
         }
     })
 
@@ -18,7 +17,6 @@ export default function Cart(props){
     props.bottoms.forEach((elem)=>{
         if(elem.cart>0){
             bottomsCart.push(elem);
-            console.log(elem)
         }
     })
     
@@ -26,7 +24,6 @@ export default function Cart(props){
     props.shoes.forEach((elem)=>{
         if(elem.cart>0){
             shoesCart.push(elem);
-            console.log(elem)
         }
     })
 
@@ -159,33 +156,34 @@ export default function Cart(props){
             <Sum>총금액:{topsSum()+bottomsSum()+shoesSum()}원</Sum>
             <button onClick={()=>{
                 props.setMoney(props.money-(topsSum()+bottomsSum()+shoesSum()))
+                
                 let copyTops = [...props.tops];
                 copyTops.forEach((elem,id)=>{
                     if(elem.cart>0){
-                        elem.purchase = elem.cart;
-                        elem.stock = elem.stock-elem.cart;
+                        elem.purchase += elem.cart;
                         elem.cart = 0;
-                    }
+                    }        
                 })
                 props.setTops([...copyTops]);
+
                 let copyBottoms = [...props.bottoms];
                 copyBottoms.forEach((elem,id)=>{
                     if(elem.cart>0){
-                        elem.purchase = elem.cart;
-                        elem.stock = elem.stock-elem.cart;
+                        elem.purchase += elem.cart;
                         elem.cart = 0;
-                    }
+                    } 
                 })
                 props.setBottoms([...copyBottoms]);
+
                 let copyShoes = [...props.shoes];
                 copyShoes.forEach((elem,id)=>{
                     if(elem.cart>0){
-                        elem.purchase = elem.cart;
-                        elem.stock = elem.stock-elem.cart;
+                        elem.purchase += elem.cart;
                         elem.cart = 0;
-                    }
+                    } 
                 })
                 props.setShoes([...copyShoes]);
+                
                 alert("주문완료!!!");
                 history.push("/order")
             }}>주문하기</button>
@@ -193,6 +191,7 @@ export default function Cart(props){
                 let copyTops = [...props.tops];
                 copyTops.forEach((elem,id)=>{
                     if(elem.cart>0){
+                        elem.stock+=elem.cart;
                         elem.cart=0;
                     }
                 })
@@ -200,6 +199,7 @@ export default function Cart(props){
                 let copyBottoms = [...props.bottoms];
                 copyBottoms.forEach((elem,id)=>{
                     if(elem.cart>0){
+                        elem.stock+=elem.cart;
                         elem.cart=0;
                     }
                 })
@@ -207,6 +207,7 @@ export default function Cart(props){
                 let copyShoes = [...props.shoes];
                 copyShoes.forEach((elem,id)=>{
                     if(elem.cart>0){
+                        elem.stock+=elem.cart;
                         elem.cart=0;
                     }
                 })
