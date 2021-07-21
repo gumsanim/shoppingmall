@@ -6,21 +6,21 @@ export default function Cart(props){
 
     let history = useHistory();
     
-    let topsCart = []
+    let topsCart = [];
     props.tops.forEach((elem)=>{
         if(elem.cart>0){
             topsCart.push(elem);
         }
     })
 
-    let bottomsCart = []
+    let bottomsCart = [];
     props.bottoms.forEach((elem)=>{
         if(elem.cart>0){
             bottomsCart.push(elem);
         }
     })
     
-    let shoesCart = []
+    let shoesCart = [];
     props.shoes.forEach((elem)=>{
         if(elem.cart>0){
             shoesCart.push(elem);
@@ -28,38 +28,32 @@ export default function Cart(props){
     })
 
     let topsSum = ()=>{
-           
-            let sum = 0;
-            topsCart.forEach((elem,id)=>{
-                if(elem.cart>0){
-                    sum+=elem.cart*elem.price;
-                }
-            })
-            console.log(sum);
-            return sum;
+        let sum = 0;
+        topsCart.forEach((elem,id)=>{
+            if(elem.cart>0){
+                sum+=elem.cart*elem.price;
+            }
+        })
+        return sum;
     }   
 
     let bottomsSum = ()=>{
-           
         let sum = 0;
         bottomsCart.forEach((elem,id)=>{
             if(elem.cart>0){
                 sum+=elem.cart*elem.price;
             }
         })
-        console.log(sum);
         return sum;
     }   
 
     let shoesSum = ()=>{
-            
         let sum = 0;
         shoesCart.forEach((elem,id)=>{
             if(elem.cart>0){
                 sum+=elem.cart*elem.price;
             }
         })
-        console.log(sum);
         return sum;
     }   
 
@@ -102,94 +96,84 @@ export default function Cart(props){
     return(
         <>
             <h1>장바구니</h1>
-
             <Align>
                 <Container>
                     <Title>상의
                         {
-                            topsCart.map((elem,id)=>{
+                            topsCart.map((elem)=>{
                                 return (
-                                  
-                                        <Content>{elem.name} / {elem.cart}개 / {elem.cart*elem.price}원</Content>
-                                   
+                                    <Content>
+                                        {elem.name} / {elem.cart}개 / {elem.cart*elem.price}원
+                                    </Content>
                                 )
                             })
                         }
                     </Title>
-                    <h3>금액:  
-                        {
-                            topsSum()
-                        }원
-                    </h3>
+                    <h3>금액: {topsSum()}원</h3>
                 </Container>
-
                 <Container>
                     <Title>하의
                         {
-                            bottomsCart.map((elem,id)=>{
-                                return <Content>{elem.name} / {elem.cart}개 / {elem.cart*elem.price}원</Content>
+                            bottomsCart.map((elem)=>{
+                                return (
+                                    <Content>
+                                        {elem.name} / {elem.cart}개 / {elem.cart*elem.price}원
+                                    </Content>
+                                )
                             })
                         }
                     </Title>
-                    <h3>금액:  
-                        {
-                        bottomsSum()
-                        }원
-                    </h3>
+                    <h3>금액: {bottomsSum()}원</h3>
                 </Container>
-
                 <Container>
                     <Title>신발
                         {
-                            shoesCart.map((elem,id)=>{
-                                return <Content>{elem.name} / {elem.cart}개 / {elem.cart*elem.price}원</Content>
+                            shoesCart.map((elem)=>{
+                                return (
+                                    <Content>
+                                        {elem.name} / {elem.cart}개 / {elem.cart*elem.price}원
+                                    </Content>
+                                )
                             })
                         }
                     </Title>
-                    <h3>금액:  
-                        {
-                        shoesSum()
-                        }원
-                    </h3>
+                    <h3>금액: {shoesSum()}원</h3>
                 </Container>
             </Align>
             <Sum>총금액:{topsSum()+bottomsSum()+shoesSum()}원</Sum>
             <button onClick={()=>{
                 props.setMoney(props.money-(topsSum()+bottomsSum()+shoesSum()))
-                
                 let copyTops = [...props.tops];
-                copyTops.forEach((elem,id)=>{
+                copyTops.forEach((elem)=>{
                     if(elem.cart>0){
                         elem.purchase += elem.cart;
                         elem.cart = 0;
                     }        
                 })
-                props.setTops([...copyTops]);
-
+                props.setTops(copyTops);
                 let copyBottoms = [...props.bottoms];
-                copyBottoms.forEach((elem,id)=>{
+                copyBottoms.forEach((elem)=>{
                     if(elem.cart>0){
                         elem.purchase += elem.cart;
                         elem.cart = 0;
                     } 
                 })
-                props.setBottoms([...copyBottoms]);
-
+                props.setBottoms(copyBottoms);
                 let copyShoes = [...props.shoes];
-                copyShoes.forEach((elem,id)=>{
+                copyShoes.forEach((elem)=>{
                     if(elem.cart>0){
                         elem.purchase += elem.cart;
                         elem.cart = 0;
                     } 
                 })
-                props.setShoes([...copyShoes]);
-                
+                props.setShoes(copyShoes);
                 alert("주문완료!!!");
                 history.push("/order")
-            }}>주문하기</button>
+            }}>주문하기
+            </button>
             <button onClick={()=>{
                 let copyTops = [...props.tops];
-                copyTops.forEach((elem,id)=>{
+                copyTops.forEach((elem)=>{
                     if(elem.cart>0){
                         elem.stock+=elem.cart;
                         elem.cart=0;
@@ -197,7 +181,7 @@ export default function Cart(props){
                 })
                 props.setTops([...copyTops]);
                 let copyBottoms = [...props.bottoms];
-                copyBottoms.forEach((elem,id)=>{
+                copyBottoms.forEach((elem)=>{
                     if(elem.cart>0){
                         elem.stock+=elem.cart;
                         elem.cart=0;
@@ -205,14 +189,15 @@ export default function Cart(props){
                 })
                 props.setBottoms([...copyBottoms]);
                 let copyShoes = [...props.shoes];
-                copyShoes.forEach((elem,id)=>{
+                copyShoes.forEach((elem)=>{
                     if(elem.cart>0){
                         elem.stock+=elem.cart;
                         elem.cart=0;
                     }
                 })
                 props.setShoes([...copyShoes]);
-            }}>비우기</button>
+            }}>비우기
+            </button>
         </>
 
     )

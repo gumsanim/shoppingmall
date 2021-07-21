@@ -25,18 +25,16 @@ export default function Order(props){
     })
 
     let topsSum = ()=>{
-           
-            let sum = 0;
-            topsPurchase.forEach((elem,id)=>{
-                if(elem.purchase>0){
-                    sum+=elem.purchase*elem.price;
-                }
-            })
-            return sum;
+        let sum = 0;
+        topsPurchase.forEach((elem,id)=>{
+            if(elem.purchase>0){
+                sum+=elem.purchase*elem.price;
+            }
+        })
+        return sum;
     }   
 
     let bottomsSum = ()=>{
-           
         let sum = 0;
         bottomsPurchase.forEach((elem,id)=>{
             if(elem.purchase>0){
@@ -47,7 +45,6 @@ export default function Order(props){
     }   
 
     let shoesSum = ()=>{
-            
         let sum = 0;
         shoesPurchase.forEach((elem,id)=>{
             if(elem.purchase>0){
@@ -61,7 +58,6 @@ export default function Order(props){
         display:flex;
         flex-wrap:wrap;
         justify-content:space-around;
-
         align-items:center;
         margin: 20px 0;
     `
@@ -96,21 +92,20 @@ export default function Order(props){
 
     return(
         <>
-
             <h1>주문내역</h1>
             <Align>
                 <Container>
                     <OrderList>상의
                         {
                             topsPurchase.map((elem,id)=>{
-                                return <OrderListItem>{elem.name} / {elem.purchase}개 / {elem.price}원</OrderListItem>
+                                return (
+                                    <OrderListItem>{elem.name} / {elem.purchase}개 / {elem.price}원</OrderListItem>
+                                )
                             })
                         }    
                     </OrderList>
                     <h3>금액:  
-                        {
-                            topsSum()
-                        }원
+                        {topsSum()}원
                     </h3>
                 </Container>
                 
@@ -119,29 +114,27 @@ export default function Order(props){
                         {
                             bottomsPurchase.map((elem,id)=>{
                                 return (
-                                <OrderListItem>{elem.name} / {elem.purchase}개 / {elem.price}원</OrderListItem>
+                                    <OrderListItem>{elem.name} / {elem.purchase}개 / {elem.price}원</OrderListItem>
                                 )
                             })
                         }  
                     </OrderList>
                     <h3>금액:  
-                        {
-                            bottomsSum()
-                        }원
+                        {bottomsSum()}원
                     </h3>
                 </Container>
                 <Container>
                     <OrderList>신발
                         {
                             shoesPurchase.map((elem,id)=>{
-                                return <OrderListItem>{elem.name} / {elem.purchase}개 / {elem.price}원</OrderListItem>
+                                return (
+                                <OrderListItem>{elem.name} / {elem.purchase}개 / {elem.price}원</OrderListItem>
+                                )
                             })
                         } 
                     </OrderList>
                     <h3>금액:  
-                        {
-                            shoesSum()
-                        }원
+                        {shoesSum()}원
                     </h3>
                 </Container> 
             </Align>

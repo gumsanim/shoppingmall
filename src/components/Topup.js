@@ -23,10 +23,19 @@ let Button = styled.button`
     height:40px;
 `
 
-
 export default function Topup(props){
 
     const [inputMoney, setInputMoney] = useState("");
+    const topup = function(){
+        if(inputMoney<10000){
+            alert("10000원 이상 입력해주세요");
+            setInputMoney("");
+            return;
+        } 
+        props.setMoney(props.money+inputMoney);
+        alert(inputMoney+"원 충전완료!!!");
+        setInputMoney("");
+    }
 
     return(
         <>
@@ -34,16 +43,16 @@ export default function Topup(props){
                 <H1>충전할 금액을 입력하세요</H1>
                 <Div>
                     <Input value={inputMoney} onChange={(e)=>{
-                        setInputMoney(parseInt(e.target.value));
+                        setInputMoney(Number(e.target.value));
                     }}/>
+                    <Button onClick={
+                        topup
+                    }>확인
+                    </Button>
                     <Button onClick={()=>{
-                        props.setMoney(props.money+inputMoney);
-                        alert(inputMoney+"원 충전완료!!!");
                         setInputMoney("");
-                    }}>확인</Button>
-                    <Button onClick={()=>{
-                        setInputMoney("");
-                    }}>초기화</Button>
+                    }}>초기화
+                    </Button>
                 </Div>
             </Container>
         </>

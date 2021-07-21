@@ -12,7 +12,6 @@ import Cart from "./components/Cart";
 import Order from "./components/Order";
 import Topup from "./components/Topup";
 
-
 function App() {
 
   const [money, setMoney] = useState(0);
@@ -24,7 +23,7 @@ function App() {
         name: "후드티",
         price: 25000,
         stock: 9,
-        img: "img/tops0.jpg",
+        img: "images/tops0.jpg",
         order: 0,
         cart: 0,
         purchase:0
@@ -34,7 +33,7 @@ function App() {
         name: "니트",
         price: 23000,
         stock: 8,
-        img: "img/tops1.jpg",
+        img: "images/tops1.jpg",
         order: 0,
         cart: 0,
         purchase:0
@@ -44,7 +43,7 @@ function App() {
         name: "셔츠",
         price: 20000,
         stock: 12,
-        img: "img/tops2.jpg",
+        img: "images/tops2.jpg",
         order: 0,
         cart: 0,
         purchase:0
@@ -54,7 +53,7 @@ function App() {
         name: "가디건",
         price: 30000,
         stock: 10,
-        img: "img/tops3.jpg",
+        img: "images/tops3.jpg",
         order: 0,
         cart: 0,
         purchase:0
@@ -64,7 +63,7 @@ function App() {
         name: "티셔츠",
         price: 9000,
         stock: 20,
-        img: "img/tops4.jpg",
+        img: "images/tops4.jpg",
         order: 0,
         cart: 0,
         purchase:0
@@ -79,7 +78,7 @@ function App() {
         name: "청바지",
         price: 32000,
         stock: 3,
-        img: "img/bottoms0.jpg",
+        img: "images/bottoms0.jpg",
         order: 0,
         cart: 0,
         purchase:0
@@ -89,7 +88,7 @@ function App() {
         name: "슬랙스",
         price: 35000,
         stock: 13,
-        img: "img/bottoms1.jpg",
+        img: "images/bottoms1.jpg",
         order: 0,
         cart: 0,
         purchase:0
@@ -99,7 +98,7 @@ function App() {
         name: "반바지",
         price: 19000,
         stock: 10,
-        img: "img/bottoms2.jpg",
+        img: "images/bottoms2.jpg",
         order: 0,
         cart: 0,
         purchase:0
@@ -109,7 +108,7 @@ function App() {
         name: "카고바지",
         price: 31000,
         stock: 18,
-        img: "img/bottoms3.jpg",
+        img: "images/bottoms3.jpg",
         order: 0,
         cart: 0,
         purchase:0
@@ -124,7 +123,7 @@ function App() {
         name: "컨버스",
         price: 59000,
         stock: 16,
-        img: "img/shoes0.jpg",
+        img: "images/shoes0.jpg",
         order: 0,
         cart: 0,
         purchase:0
@@ -134,7 +133,7 @@ function App() {
         name: "슈퍼스타",
         price: 88000,
         stock: 6,
-        img: "img/shoes1.jpg",
+        img: "images/shoes1.jpg",
         order: 0,
         cart: 0,
         purchase:0
@@ -144,7 +143,7 @@ function App() {
         name: "에어포스",
         price: 120000,
         stock: 11,
-        img: "img/shoes2.jpg",
+        img: "images/shoes2.jpg",
         order: 0,
         cart: 0,
         purchase:0
@@ -154,7 +153,7 @@ function App() {
         name: "올드스쿨",
         price: 76000,
         stock: 2,
-        img: "img/shoes3.jpg",
+        img: "images/shoes3.jpg",
         order: 0,
         cart: 0,
         purchase:0
@@ -164,66 +163,69 @@ function App() {
 
   return (
     <div className="App">
-        <Route path="/">
-          <Home money={money} setMoney={setMoney}/>
-        </Route>
-        <Route exact path="/tops">
-          <Tops tops={tops} setTops={setTops} />
-        </Route>
-        <Route exact path="/bottoms">
-          <Bottoms bottoms={bottoms} setBottoms={setBottoms}/>
-        </Route>
-        <Route exact path="/shoes">
-          <Shoes shoes={shoes} setShoes={setShoes}/>
-        </Route>
-        <Route path="/tops/detail/:id">
-          <DetailTops 
-            tops={tops} 
-            setTops={setTops} 
-            money={money} 
-            setMoney={setMoney}/>
-        </Route>
-        <Route path="/bottoms/detail/:id">
-          <DetailBottoms 
-            bottoms={bottoms} 
-            setBottoms={setBottoms} 
-            money={money} 
-            setMoney={setMoney}/>
-        </Route>
-        <Route path="/shoes/detail/:id">
-          <DetailShoes 
-            shoes={shoes} 
-            setShoes={setShoes} 
-            money={money} 
-            setMoney={setMoney}/>
-        </Route>
-        <Route path="/cart">
-          <Cart 
-            money={money}
-            setMoney={setMoney}
-            tops={tops}
-            setTops={setTops}
-            bottoms={bottoms}
-            setBottoms={setBottoms}
-            shoes={shoes}
-            setShoes={setShoes}
-          />
-        </Route>
-        <Route path="/order">
-            <Order 
-            money={money} 
-            setMoney={setMoney}
-            tops={tops}
-            setTops={tops}
-            bottoms={bottoms}
-            setBottoms={setBottoms}
-            shoes={shoes}
-            setShoes={setShoes}
-            />
-        </Route>
-        <Route path="/topup">
-          <Topup money={money} setMoney={setMoney}/>
-        </Route>
+      <Route path="/">
+        <Home money={money} setMoney={setMoney}/>
+      </Route>
+      <Route exact path="/tops">
+        <Tops tops={tops} setTops={setTops} />
+      </Route>
+      <Route exact path="/bottoms">
+        <Bottoms bottoms={bottoms} setBottoms={setBottoms}/>
+      </Route>
+      <Route exact path="/shoes">
+        <Shoes shoes={shoes} setShoes={setShoes}/>
+      </Route>
+      <Route path="/tops/detail/:id">
+        <DetailTops 
+          tops={tops} 
+          setTops={setTops} 
+          money={money} 
+          setMoney={setMoney}
+        />
+      </Route>
+      <Route path="/bottoms/detail/:id">
+        <DetailBottoms 
+          bottoms={bottoms} 
+          setBottoms={setBottoms} 
+          money={money} 
+          setMoney={setMoney}
+        />
+      </Route>
+      <Route path="/shoes/detail/:id">
+        <DetailShoes 
+          shoes={shoes} 
+          setShoes={setShoes} 
+          money={money} 
+          setMoney={setMoney}
+        />
+      </Route>
+      <Route path="/cart">
+        <Cart 
+          money={money}
+          setMoney={setMoney}
+          tops={tops}
+          setTops={setTops}
+          bottoms={bottoms}
+          setBottoms={setBottoms}
+          shoes={shoes}
+          setShoes={setShoes}
+        />
+      </Route>
+      <Route path="/order">
+        <Order 
+          money={money} 
+          setMoney={setMoney}
+          tops={tops}
+          setTops={tops}
+          bottoms={bottoms}
+          setBottoms={setBottoms}
+          shoes={shoes}
+          setShoes={setShoes}
+        />
+      </Route>
+      <Route path="/topup">
+        <Topup money={money} setMoney={setMoney}/>
+      </Route>
     </div>
   );
 }
